@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <title>Projeto Faculdade</title>
+</head>
+<body class="bg-neutral-800 p-6 text-gray-200 space-y-6">
+
+  <header class="w-full text-center mb-6">
+    <h1 class="font-bold text-4xl">Projeto da Disciplina Ciclo 3</h1>
+  </header>
+
+  <div class="space-y-6">
+    <nav class="flex justify-center space-x-6">
+      <button id="showCreateForm" class="p-4 text-lg bg-neutral-700 hover:bg-neutral-600 rounded-lg">Criar Conta</button>
+      <button id="showAlterForm" class="p-4 text-lg bg-neutral-700 hover:bg-neutral-600 rounded-lg">Alterar Conta</button>
+      <button id="showDeleteForm" class="p-4 text-lg bg-neutral-700 hover:bg-neutral-600 rounded-lg">Excluir Conta</button>
+      <button id="showTransferForm" class="p-4 text-lg bg-neutral-700 hover:bg-neutral-600 rounded-lg">Transferência</button>
+    </nav>
+    
+    <div id="createContainer" class="hidden">
+      <form id="createForm" class="space-y-4 p-6 rounded-2xl bg-neutral-600 flex flex-col items-center">
+        <div class="space-y-4">
+          <div class="flex flex-col max-w-xs">
+            <label for="createConta" class="cursor-pointer text-lg">Crie uma conta no banco</label>
+            <input type="text" id="createConta" placeholder="Digite o nome da conta..." required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+          </div>
+          <div class="flex flex-col max-w-xs">
+            <label for="initSaldo" class="cursor-pointer text-lg">Adicione um saldo inicial</label>
+            <input type="number" id="initSaldo" placeholder="Saldo inicial" min="10" required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+          </div>
+        </div>
+        <button type="submit" class="font-semibold bg-neutral-800 rounded-2xl px-8 py-3 hover:bg-neutral-700 duration-300">
+          Cadastrar Conta
+        </button>
+      </form>
+    </div>
+
+    <div id="alterContainer" class="hidden">
+      <form id="alterForm" class="space-y-4 p-6 rounded-2xl bg-neutral-600 flex flex-col items-center">
+        <div class="flex flex-col max-w-xs">
+          <label for="alterConta" class="cursor-pointer text-lg">Número da conta para alterar</label>
+          <input type="text" id="alterConta" placeholder="Digite o número da conta..." required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <div class="flex flex-col max-w-xs">
+          <label for="newSaldo" class="cursor-pointer text-lg">Novo saldo</label>
+          <input type="number" id="newSaldo" placeholder="Novo saldo" min="10" required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <button type="submit" class="font-semibold bg-neutral-800 rounded-2xl px-8 py-3 hover:bg-neutral-700 duration-300">
+          Alterar Conta
+        </button>
+      </form>
+    </div>
+
+    <div id="transferContainer" class="hidden">
+      <form id="transferForm" class="space-y-4 p-6 rounded-2xl bg-neutral-600 flex flex-col items-center">
+        <div class="flex flex-col max-w-xs">
+          <label for="sourceAccount" class="cursor-pointer text-lg">Conta de origem</label>
+          <input type="text" id="sourceAccount" placeholder="Conta de origem" required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <div class="flex flex-col max-w-xs">
+          <label for="targetAccount" class="cursor-pointer text-lg">Conta de destino</label>
+          <input type="text" id="targetAccount" placeholder="Conta de destino" required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <div class="flex flex-col max-w-xs">
+          <label for="transferAmount" class="cursor-pointer text-lg">Valor a transferir</label>
+          <input type="number" id="transferAmount" placeholder="Valor" min="1" required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <button type="submit" class="font-semibold bg-neutral-800 rounded-2xl px-8 py-3 hover:bg-neutral-700 duration-300">
+          Transferir
+        </button>
+      </form>
+    </div>
+
+    <div id="deleteContainer" class="hidden">
+      <form id="deleteForm" class="space-y-4 p-6 rounded-2xl bg-neutral-600 flex flex-col items-center">
+        <div class="flex flex-col max-w-xs">
+          <label for="deleteConta" class="cursor-pointer text-lg">Número da conta para excluir</label>
+          <input type="text" id="deleteConta" placeholder="Digite o número da conta..." required class="rounded-lg outline-none text-gray-800 px-4 py-2" />
+        </div>
+        <button type="submit" class="font-semibold bg-neutral-800 rounded-2xl px-8 py-3 hover:bg-neutral-700 duration-300">
+          Excluir Conta
+        </button>
+      </form>
+    </div>
+
+    <div class="space-y-4 p-6 rounded-2xl bg-neutral-600 flex flex-col items-center">
+      <button id="listAccounts" type="button" class="text-2xl font-semibold bg-neutral-800 rounded-2xl px-8 py-3 hover:bg-neutral-700 duration-300">
+        Listar todas as contas
+      </button>
+      <div id="accountList" class="w-full text-left text-gray-200 mt-4"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
